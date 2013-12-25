@@ -68,10 +68,10 @@ public class Switch extends CompoundButton {
     private static final int SERIF = 2;
     private static final int MONOSPACE = 3;
 
-    private final Drawable mThumbDrawable;
-    private final Drawable mTrackDrawable;
-    private final int mThumbTextPadding;
-    private final int mSwitchMinWidth;
+    protected final Drawable mThumbDrawable;
+    protected final Drawable mTrackDrawable;
+    protected final int mThumbTextPadding;
+    protected final int mSwitchMinWidth;
     private final int mSwitchPadding;
     private CharSequence mTextOn;
     private CharSequence mTextOff;
@@ -83,22 +83,22 @@ public class Switch extends CompoundButton {
     private final VelocityTracker mVelocityTracker = VelocityTracker.obtain();
     private final int mMinFlingVelocity;
 
-    private float mThumbPosition;
-    private int mSwitchWidth;
+    protected float mThumbPosition;
+    protected int mSwitchWidth;
     private int mSwitchHeight;
-    private int mThumbWidth; // Does not include padding
+    protected int mThumbWidth; // Does not include padding
 
-    private int mSwitchLeft;
-    private int mSwitchTop;
-    private int mSwitchRight;
-    private int mSwitchBottom;
+    protected int mSwitchLeft;
+    protected int mSwitchTop;
+    protected int mSwitchRight;
+    protected int mSwitchBottom;
 
-    private final TextPaint mTextPaint;
-    private ColorStateList mTextColors;
-    private Layout mOnLayout;
-    private Layout mOffLayout;
+    protected final TextPaint mTextPaint;
+    protected ColorStateList mTextColors;
+    protected Layout mOnLayout;
+    protected Layout mOffLayout;
 
-    private final Rect mTempRect = new Rect();
+    protected final Rect mTempRect = new Rect();
 
     private static final int[] CHECKED_STATE_SET = { android.R.attr.state_checked };
 
@@ -119,7 +119,7 @@ public class Switch extends CompoundButton {
      * @param attrs Specification of attributes that should deviate from default styling.
      */
     public Switch(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.switchStyle);
+        this(context, attrs, R.attr.icsSwitchStyle);
     }
 
     /**
@@ -474,7 +474,7 @@ public class Switch extends CompoundButton {
         setChecked(newCheckedState);
     }
 
-    private boolean getTargetCheckedState() {
+    protected boolean getTargetCheckedState() {
         return mThumbPosition >= getThumbScrollRange() / 2;
     }
 
@@ -522,7 +522,10 @@ public class Switch extends CompoundButton {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        onDrawInternal(canvas);
+    }
 
+    protected void onDrawInternal(Canvas canvas) {
         // Draw the switch
         final int switchLeft = mSwitchLeft;
         final int switchTop = mSwitchTop;
