@@ -75,7 +75,6 @@
         <attr name="switchPadding" format="dimension" />
     </declare-styleable>
     <declare-styleable name="Theme">
-        <attr name="switchStyle" format="reference" />
         <attr name="switchPreferenceStyle" format="reference" />
     </declare-styleable>
     <declare-styleable name="Android">

@@ -119,7 +119,7 @@ public class Switch extends CompoundButton {
      * @param attrs Specification of attributes that should deviate from default styling.
      */
     public Switch(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.switchStyle);
+        this(context, attrs, R.style.Widget_Holo_CompoundButton_Switch);
     }
 
     /**
